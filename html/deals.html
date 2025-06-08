@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chope Deals - Exclusive Restaurant Offers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/deals.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="chope">Chope</span>
+                <span class="grab">with Grab</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="restaurant-directory.html">Restaurant Directory</a></li>
+                <li><a href="#">Exclusive Discounts <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="#" class="active">Deals</a></li>
+                <li><a href="#">Guides</a></li>
+                <li><a href="#">Rewards</a></li>
+            </ul>
+            
+            <div class="nav-right">
+                <div class="cart-icon" onclick="openCartModal()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartIcon" style="display: none;"></span>
+                </div>
+                
+                <select class="location-selector">
+                    <option value="jakarta">Jakarta</option>
+                    <option value="singapore">Singapore</option>
+                    <option value="bangkok">Bangkok</option>
+                    <option value="bali">Bali</option>
+                </select>
+
+                <a href="#" class="auth-btn">
+                    <i class="fas fa-user"></i>
+                    Sign Up or Login
+                </a>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Exclusive Restaurant Deals</h1>
+            <p>Save up to 50% at Jakarta's best restaurants. Limited time offers you don't want to miss!</p>
+            
+            <div class="search-bar">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Search restaurants, cuisines, or locations">
+                    <select class="search-select">
+                        <option value="all">All Cuisines</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="italian">Italian</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="western">Western</option>
+                    </select>
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i> Search Deals
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+        <div class="filter-container">
+            <div class="filter-label">
+                <i class="fas fa-sliders-h"></i>
+                <span>Filter by:</span>
+            </div>
+            
+            <div class="filter-tags">
+                <a href="#" class="filter-tag active" data-filter="all">All Deals</a>
+                <a href="#" class="filter-tag" data-filter="buy1get1">Buy 1 Get 1</a>
+                <a href="#" class="filter-tag" data-filter="buffet">Buffet Deals</a>
+                <a href="#" class="filter-tag" data-filter="setmenu">Set Menu</a>
+                <a href="#" class="filter-tag" data-filter="happyhour">Happy Hour</a>
+                <a href="#" class="filter-tag" data-filter="weekend">Weekend Special</a>
+            </div>
+
+            <select class="sort-select">
+                <option value="discount">Highest Discount</option>
+                <option value="rating">Highest Rating</option>
+                <option value="price">Lowest Price</option>
+                <option value="newest">Newest Deals</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Featured Banner -->
+    <section class="featured-banner">
+        <div class="banner-container">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <div class="banner-badges">
+                        <span class="badge badge-red">LIMITED TIME</span>
+                        <span class="badge badge-green">EXCLUSIVE</span>
+                    </div>
+                    <h2>SaladStop! Going Green Special</h2>
+                    <p>Get up to 21% OFF exclusive vouchers from SaladStop! Choose from value vouchers or combo deals.</p>
+                    
+                    <div class="voucher-options">
+                        <div class="voucher-card">
+                            <div class="title">Value Voucher</div>
+                            <div class="value">Rp 100,000</div>
+                            <div class="original">Rp. 100,000</div>
+                            <div class="price">Rp. 88,000</div>
+                        </div>
+                        <div class="voucher-card">
+                            <div class="title">1 Salad + 1 Smoothie</div>
+                            <div class="value">Combo Deal</div>
+                            <div class="original">Rp. 150,000</div>
+                            <div class="price">Rp. 119,000</div>
+                        </div>
+                    </div>
+                </div>
+                <img src="/assets/SaladStop_Deals.jpeg" alt="SaladStop promotion" class="banner-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Dining Deal Categories -->
+    <section class="categories-section">
+        <div class="categories-container">
+            <h2 class="section-title">Popular Dining Deal Categories</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card japanese" data-category="japanese">
+                    <div class="category-content">
+                        <h3 class="category-title">Japanese</h3>
+                        <p class="category-description">Whether it's sushi, sashimi, or donburi bowls, you can't go wrong with Japanese food!</p>
+                    </div>
+                    <img src="/assets/Deals_Japanese.webp" alt="Japanese food" class="category-image">
+                </div>
+
+                <div class="category-card korean" data-category="korean">
+                    <div class="category-content">
+                        <h3 class="category-title">Korean</h3>
+                        <p class="category-description">An assortment of Korean classics at your fingertips!</p>
+                    </div>
+                    <img src="/assets/Deals_Korean.jpeg" alt="Korean food" class="category-image">
+                </div>
+
+                <div class="category-card indonesian" data-category="indonesian">
+                    <div class="category-content">
+                        <h3 class="category-title">Indonesian</h3>
+                        <p class="category-description">Bring on the spice! Nothing beats comfort food like getting deals on your home turf.</p>
+                    </div>
+                    <img src="/assets/Deals_Indonesian.webp" alt="Indonesian food" class="category-image">
+                </div>
+
+                <div class="category-card chinese" data-category="chinese">
+                    <div class="category-content">
+                        <h3 class="category-title">Chinese</h3>
+                        <p class="category-description">Looking for family favourites? There's no doubt that these dishes will give you a sense of comfort.</p>
+                    </div>
+                    <img src="/assets/Deals_Chinese.webp" alt="Chinese food" class="category-image">
+                </div>
+
+                <div class="category-card coffee" data-category="coffee">
+                    <div class="category-content">
+                        <h3 class="category-title">Coffee</h3>
+                        <p class="category-description">If you're looking for a quick pick-me-up, this is the way to go!</p>
+                    </div>
+                    <img src="/assets/Deals_Coffee.jpeg" alt="Coffee" class="category-image">
+                </div>
+
+                <div class="category-card desserts" data-category="desserts">
+                    <div class="category-content">
+                        <h3 class="category-title">Desserts</h3>
+                        <p class="category-description">Perfect for those with a sweet tooth! Your next dessert fix is right in here.</p>
+                    </div>
+                    <img src="/assets/Deals_Desserts.webp" alt="Desserts" class="category-image">
+                </div>
+
+                <div class="category-card vouchers" data-category="vouchers">
+                    <div class="category-content">
+                        <h3 class="category-title">Value Vouchers</h3>
+                        <p class="category-description">Gift a friend or use them for yourselves! Get amazing deals on value vouchers on these restaurants.</p>
+                    </div>
+                    <img src="/assets/Deals_ValueVouchers.jpeg" alt="Value vouchers" class="category-image">
+                </div>
+
+                <div class="category-card all-dining" data-category="all">
+                    <div class="category-content">
+                        <h3 class="category-title">All Dining Vouchers</h3>
+                        <p class="category-description">Check out all the dining vouchers here!</p>
+                    </div>
+                    <img src="/assets/Deals_Dining.jpeg" alt="All dining vouchers" class="category-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deals Grid -->
+    <section class="deals-section">
+        <div class="deals-container">
+            <div class="deals-header">
+                <h2>All Restaurant Deals</h2>
+                <div class="deals-count">Showing <span id="visibleDealsCount">0</span> of <span id="totalDealsCount">0</span> deals</div>
+            </div>
+
+            <div class="deals-grid" id="dealsGrid">
+                <!-- Deal cards will be dynamically generated here -->
+            </div>
+
+            <button class="load-more-btn" id="loadMoreBtn">Load More Deals</button>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2>Never Miss a Deal</h2>
+            <p>Subscribe to our newsletter and be the first to know about exclusive restaurant deals and limited-time offers.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Main Footer Content -->
+            <div class="footer-grid">
+                <!-- For Diners Column -->
+                <div class="footer-column">
+                    <h3>For Diners</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Reservations</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Deals</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Rewards</a></li>
+                    </ul>
+                </div>
+
+                <!-- For Restaurants Column -->
+                <div class="footer-column">
+                    <h3>For Restaurants</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Chope For Restaurants</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Column -->
+                <div class="footer-column">
+                    <h3>More</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Chope</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+
+                <!-- Download our App Column -->
+                <div class="footer-column">
+                    <h3>Download our App</h3>
+                    <div class="app-buttons">
+                        <!-- App Store Button -->
+                        <a href="#" class="app-button">
+                            <div class="app-icon">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                            <div class="app-text">
+                                <div class="app-subtitle">Download on the</div>
+                                <div class="app-title">App Store</div>
+                            </div>
+                        </a>
+
+                        <!-- Google Play Button -->
+                        <a href="#" class="app-button">
+                            <div class="app-icon">
+                                <i class="fab fa-google-play"></i>
+                            </div>
+                            <div class="app-text">
+                                <div class="app-subtitle">GET IT ON</div>
+                                <div class="app-title">Google Play</div>
+                            </div>
+                        </a>
+
+                        <!-- AppGallery Button -->
+                        <a href="#" class="app-button">
+                            <div class="app-icon">
+                                <span style="font-weight: bold;">H</span>
+                            </div>
+                            <div class="app-text">
+                                <div class="app-subtitle">EXPLORE IT ON</div>
+                                <div class="app-title">AppGallery</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <!-- Copyright and Logo -->
+                    <div class="footer-copyright">
+                        <span style="color: #d1d5db; font-size: 0.8rem;">© 2025</span>
+                        <div class="logo-section">
+                            <div class="chope-logo">
+                                <span class="logo-icon">C</span>
+                            </div>
+                            <span style="color: #d1d5db; font-size: 0.8rem;">with Grab</span>
+                        </div>
+                        <span style="color: #d1d5db; font-size: 0.8rem;">All Rights Reserved</span>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-section">
+                        <span style="color: #d1d5db; font-size: 0.8rem;">Follow Us</span>
+                        <div class="social-icons">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-section">
+                        <h4>Chope Customer Support Contact</h4>
+                        <p>
+                            For Chope Customer Support please fill in 
+                            <a href="#" class="contact-link">Contact Form</a> 
+                            or email support.id@chope.co.
+                        </p>
+                    </div>
+
+                    <div class="contact-section">
+                        <h4>Service Contact Information for Consumer Complaints</h4>
+                        <p>
+                            Direktorat Jenderal Perlindungan Konsumen dan Tertib Niaga, Kementerian Perdagangan, Republik Indonesia
+                        </p>
+                        <p>WhatsApp Ditjen PKTN: 0853-1111-1010</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Deal/Menu Modal -->
+    <div id="foodOrderModal" class="modal">
+        <div class="modal-content food-order-modal">
+            <div class="modal-header">
+                <div id="foodOrderModalTitle" class="restaurant-header">
+                    <!-- Restaurant title and info will be populated here -->
+                </div>
+                <span class="close" onclick="closeFoodOrderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="foodOrderModalContent" class="food-order-container">
+                    <!-- Menu items and cart will be populated here -->
+                </div>
+                <div class="modal-actions">
+                    <button class="add-deal-to-cart-btn" onclick="addDealToCart()">Add Deal to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Cart</h2>
+                <span class="close" onclick="closeCartModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems" class="cart-items">
+                    <!-- Cart items will be populated here -->
+                </div>
+                <div id="cartModalSummary" class="cart-summary">
+                    <!-- Cart summary will be populated here -->
+                </div>
+                <div class="cart-actions">
+                    <button class="btn-cancel" onclick="closeCartModal()">Continue Shopping</button>
+                    <button class="btn-confirm" id="proceedToCheckoutBtn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal">
+            <div class="modal-header">
+                <h2 id="checkoutModalTitle">Checkout</h2>
+                <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Step 1: Customer Information -->
+                <div id="checkoutStep1" class="checkout-step">
+                    <div class="checkout-summary">
+                        <h3>Order Summary</h3>
+                        <div class="checkout-total">Total: <span id="checkoutTotal">Rp 0</span></div>
+                    </div>
+                    
+                    <form id="customerInfoForm" class="checkout-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <div class="error-message" id="fullNameError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                            <div class="error-message" id="phoneNumberError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emailAddress">Email Address</label>
+                            <input type="email" id="emailAddress" name="emailAddress" required>
+                            <div class="error-message" id="emailAddressError"></div>
+                        </div>
+                        
+                        <button type="submit" class="checkout-btn">Next: Select Payment</button>
+                    </form>
+                </div>
+                
+                <!-- Step 2: Payment Method -->
+                <div id="checkoutStep2" class="checkout-step" style="display: none;">
+                    <div class="checkout-summary">
+                        <h3>Order Summary</h3>
+                        <div class="checkout-total">Total: <span id="checkoutTotal2">Rp 0</span></div>
+                        
+                        <div class="customer-info-summary">
+                            <h4>Customer Information</h4>
+                            <p id="summaryFullName"></p>
+                            <p id="summaryPhoneNumber"></p>
+                            <p id="summaryEmailAddress"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h3>Select Payment Method</h3>
+                        <div class="payment-options">
+                            <div class="payment-option" data-payment="credit-card">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                            <div class="payment-option" data-payment="bca">
+                                <i class="fas fa-university"></i>
+                                <span>BCA Virtual Account</span>
+                            </div>
+                            <div class="payment-option" data-payment="gopay">
+                                <i class="fas fa-wallet"></i>
+                                <span>GoPay</span>
+                            </div>
+                            <div class="payment-option" data-payment="ovo">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>OVO</span>
+                            </div>
+                        </div>
+                        <div class="error-message" id="paymentMethodError"></div>
+                    </div>
+                    
+                    <button id="placeOrderBtn" class="checkout-btn" disabled>Place Order</button>
+                </div>
+                
+                <!-- Step 3: Order Confirmation -->
+                <div id="checkoutStep3" class="checkout-step" style="display: none;">
+                    <div class="order-confirmation">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Thank You! Your order has been placed.</h3>
+                        
+                        <div class="order-details">
+                            <div class="order-detail">
+                                <span class="detail-label">Order ID:</span>
+                                <span class="detail-value" id="orderIdValue"></span>
+                            </div>
+                            <div class="order-detail">
+                                <span class="detail-label">Total Amount:</span>
+                                <span class="detail-value" id="totalAmountValue"></span>
+                            </div>
+                            <div class="order-detail">
+                                <span class="detail-label">Payment Method:</span>
+                                <span class="detail-value" id="paymentMethodValue"></span>
+                            </div>
+                        </div>
+                        
+                        <button class="checkout-btn" onclick="finishCheckout()">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <script src="/js/deals.js"></script>
+</body>
+</html>

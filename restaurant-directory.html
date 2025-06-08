@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Directory - Chope with Grab</title>
+    <link rel="stylesheet" href="/css/restaurant-directory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="chope">Chope</span>
+                <span style="color: #666;">with</span>
+                <span class="grab">Grab</span>
+                <i class="fas fa-chevron-down" style="font-size: 0.8rem; color: #666;"></i>
+            </div>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search for something yummy">
+            </div>
+
+            <div class="header-right">
+                <button class="auth-btn">
+                    <i class="fas fa-user"></i>
+                    Sign Up or Login
+                </button>
+                <div class="location-selector">
+                    <span>Jakarta</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="nav-menu-container">
+            <ul class="nav-links">
+                <li><a href="#" class="active">Restaurant Directory</a></li>
+                <li><a href="#">Exclusive Discounts</a></li>
+                <li><a href="/html/deals.html">Deals</a></li>
+                <li><a href="#">Guides</a></li>
+                <li><a href="#">Rewards</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <!-- Cuisine Filter -->
+            <div class="filter-section">
+                <div class="filter-header">Any Cuisine</div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            I'm hungry for:
+                            <a href="#" class="clear-link" onclick="clearCuisineFilters()">Select All</a>
+                        </div>
+                        <div class="checkbox-grid" id="cuisineFilters">
+                            <!-- Cuisine checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Filter -->
+            <div class="filter-section">
+                <div class="filter-header">Any Location</div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            Around:
+                            <a href="#" class="clear-link" onclick="clearLocationFilters()">Select All</a>
+                        </div>
+                        <div class="checkbox-grid" id="locationFilters">
+                            <!-- Location checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Filters -->
+            <div class="filter-section">
+                <div class="filter-header">Filters</div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            Good For
+                            <a href="#" class="clear-link" onclick="clearGoodForFilters()">Clear >></a>
+                        </div>
+                        <div class="checkbox-grid" id="goodForFilters">
+                            <!-- Good For checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-title">
+                            Others
+                            <a href="#" class="clear-link" onclick="clearOthersFilters()">Clear >></a>
+                        </div>
+                        <div class="checkbox-grid" id="othersFilters">
+                            <!-- Others checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Restaurant Grid -->
+        <section class="restaurant-content">
+            <!-- Special Offers -->
+            <div class="offers-section">
+                <div class="offer-badge offers">
+                    <i class="fas fa-tag"></i>
+                    Offers
+                </div>
+                <div class="offer-badge diners">
+                    <i class="fas fa-trophy"></i>
+                    Diners' Choice Winner
+                </div>
+                <div class="offer-badge new">
+                    <i class="fas fa-star"></i>
+                    New On Chope
+                </div>
+                <div class="offer-badge redeem">
+                    <i class="fas fa-coins"></i>
+                    Redeem Chope-Dollars
+                </div>
+            </div>
+
+            <div class="restaurant-grid" id="restaurantGrid">
+                <!-- Loading state -->
+                <div class="loading" id="loadingState">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Menu Modal -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="menuModalTitle">Restaurant Menu</h2>
+                <span class="close" onclick="closeMenuModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="menuItems" class="menu-items">
+                    <!-- Menu carousel will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book a Table</h2>
+                <span class="close" onclick="closeBookingModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="restaurantName">Restaurant:</label>
+                        <input type="text" id="restaurantName" name="restaurantName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests:</label>
+                        <input type="number" id="guests" name="guests" min="1" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time:</label>
+                        <select id="time" name="time" required>
+                            <option value="">Select a time</option>
+                            <option value="17:00">5:00 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="21:00">9:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" onclick="closeBookingModal()" class="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn-confirm">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Booking Confirmed!</h2>
+                <span class="close" onclick="closeConfirmationModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="confirmation-success">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Your reservation has been successfully confirmed!</p>
+                </div>
+                <div class="booking-summary">
+                    <h3>Booking Details:</h3>
+                    <div class="summary-item">
+                        <strong>Restaurant:</strong> <span id="confirmRestaurant"></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Date:</strong> <span id="confirmDate"></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Time:</strong> <span id="confirmTime"></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Guests:</strong> <span id="confirmGuests"></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Booking ID:</strong> <span id="confirmBookingId"></span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button onclick="closeConfirmationModal()" class="btn-done">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/restaurant-directory.js"></script>
+</body>
+</html>
